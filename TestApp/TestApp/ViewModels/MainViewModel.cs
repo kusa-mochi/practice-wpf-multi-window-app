@@ -14,6 +14,13 @@ namespace TestApp.ViewModels
     {
         private readonly IDialogService _dialogService;
 
+        /// <summary>
+        /// コンストラクタ。
+        /// DI（Dependency Injection）により、Viewからダイアログ表示処理を担うサービスが渡される。
+        /// この構造により、MVVMにおけるViewとViewModelの循環参照防止とそれぞれの役割分担の明確化を
+        /// 実現している。
+        /// </summary>
+        /// <param name="ds"></param>
         internal MainViewModel(IDialogService ds)
         {
             _dialogService = ds;

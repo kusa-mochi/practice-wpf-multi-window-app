@@ -13,6 +13,10 @@ namespace TestApp.Services
         C
     }
 
+    /// <summary>
+    /// モードレスダイアログの表示処理実装に用いるインターフェイス。
+    /// ViewからViewModelへのダイアログ表示処理のDIに用いる。
+    /// </summary>
     internal interface IDialogService
     {
         Task ShowModelessDialog(FuncType funcType);
