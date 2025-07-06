@@ -29,33 +29,45 @@ namespace TestApp.ViewModels
         private bool isWindowCOpened = false;
 
         [RelayCommand]
-        private void OpenWindowA()
+        private async Task OpenWindowA()
         {
             if (IsWindowAOpened) return;
 
             IsWindowAOpened = true;
             Debug.WriteLine("open window A");
-            _dialogService.ShowModelessDialog(FuncType.A);
+
+            // モードレスダイアログを表示し、閉じられるまで待機する。
+            await _dialogService.ShowModelessDialog(FuncType.A);
+
+            IsWindowAOpened = false;
         }
 
         [RelayCommand]
-        private void OpenWindowB()
+        private async Task OpenWindowB()
         {
             if (IsWindowBOpened) return;
 
             IsWindowBOpened = true;
             Debug.WriteLine("open window B");
-            _dialogService.ShowModelessDialog(FuncType.B);
+
+            // モードレスダイアログを表示し、閉じられるまで待機する。
+            await _dialogService.ShowModelessDialog(FuncType.B);
+
+            IsWindowBOpened = false;
         }
 
         [RelayCommand]
-        private void OpenWindowC()
+        private async Task OpenWindowC()
         {
             if (IsWindowCOpened) return;
 
             IsWindowCOpened = true;
             Debug.WriteLine("open window C");
-            _dialogService.ShowModelessDialog(FuncType.C);
+
+            // モードレスダイアログを表示し、閉じられるまで待機する。
+            await _dialogService.ShowModelessDialog(FuncType.C);
+
+            IsWindowCOpened = false;
         }
     }
 }

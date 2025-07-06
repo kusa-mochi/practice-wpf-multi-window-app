@@ -15,6 +15,6 @@ namespace TestApp.Services
 
     internal interface IDialogService
     {
-        void ShowModelessDialog(FuncType funcType);
+        Task ShowModelessDialog(FuncType funcType);
     }
 }

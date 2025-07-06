@@ -10,8 +10,10 @@ namespace TestApp.Services
 {
     internal class DialogService : IDialogService
     {
-        public void ShowModelessDialog(FuncType funcType)
+        public Task ShowModelessDialog(FuncType funcType)
         {
+            var tcs = new TaskCompletionSource<bool>(); // ダイアログが閉じられたら完了するTask
+
             Window dialog = funcType switch
             {
                 FuncType.A => new WindowA(),
@@ -19,7 +21,15 @@ namespace TestApp.Services
                 FuncType.C => new WindowC(),
                 _ => throw new Exception("invalid func type")
             };
+
+            dialog.Closed += (sender, e) =>
+            {
+                tcs.SetResult(true);
+            };
+
             dialog.Show();
+
+            return tcs.Task;
         }
     }
 }
