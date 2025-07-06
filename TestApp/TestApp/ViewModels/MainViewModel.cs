@@ -20,18 +20,20 @@ namespace TestApp.ViewModels
         }
 
         [ObservableProperty]
-        private bool isButtonAEnabled = true;
+        private bool isWindowAOpened = false;
 
         [ObservableProperty]
-        private bool isButtonBEnabled = true;
+        private bool isWindowBOpened = false;
 
         [ObservableProperty]
-        private bool isButtonCEnabled = true;
+        private bool isWindowCOpened = false;
 
         [RelayCommand]
         private void OpenWindowA()
         {
-            IsButtonAEnabled = false;
+            if (IsWindowAOpened) return;
+
+            IsWindowAOpened = true;
             Debug.WriteLine("open window A");
             _dialogService.ShowModelessDialog(FuncType.A);
         }
@@ -39,7 +41,9 @@ namespace TestApp.ViewModels
         [RelayCommand]
         private void OpenWindowB()
         {
-            IsButtonBEnabled = false;
+            if (IsWindowBOpened) return;
+
+            IsWindowBOpened = true;
             Debug.WriteLine("open window B");
             _dialogService.ShowModelessDialog(FuncType.B);
         }
@@ -47,7 +51,9 @@ namespace TestApp.ViewModels
         [RelayCommand]
         private void OpenWindowC()
         {
-            IsButtonCEnabled = false;
+            if (IsWindowCOpened) return;
+
+            IsWindowCOpened = true;
             Debug.WriteLine("open window C");
             _dialogService.ShowModelessDialog(FuncType.C);
         }
