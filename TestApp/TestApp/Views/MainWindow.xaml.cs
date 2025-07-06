@@ -8,6 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestApp.Services;
+using TestApp.ViewModels;
 
 namespace TestApp
 {
@@ -19,6 +21,9 @@ namespace TestApp
         public MainWindow()
         {
             InitializeComponent();
+
+            IDialogService ds = new DialogService();
+            this.DataContext = new MainViewModel(ds);
         }
     }
 }

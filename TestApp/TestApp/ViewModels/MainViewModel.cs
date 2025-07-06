@@ -6,11 +6,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestApp.Services;
 
 namespace TestApp.ViewModels
 {
     internal partial class MainViewModel: ObservableObject
     {
+        private readonly IDialogService _dialogService;
+
+        internal MainViewModel(IDialogService ds)
+        {
+            _dialogService = ds;
+        }
+
         [ObservableProperty]
         private bool isButtonAEnabled = true;
 
@@ -25,6 +33,7 @@ namespace TestApp.ViewModels
         {
             IsButtonAEnabled = false;
             Debug.WriteLine("open window A");
+            _dialogService.ShowModelessDialog(FuncType.A);
         }
 
         [RelayCommand]
@@ -32,6 +41,7 @@ namespace TestApp.ViewModels
         {
             IsButtonBEnabled = false;
             Debug.WriteLine("open window B");
+            _dialogService.ShowModelessDialog(FuncType.B);
         }
 
         [RelayCommand]
@@ -39,6 +49,7 @@ namespace TestApp.ViewModels
         {
             IsButtonCEnabled = false;
             Debug.WriteLine("open window C");
+            _dialogService.ShowModelessDialog(FuncType.C);
         }
     }
 }

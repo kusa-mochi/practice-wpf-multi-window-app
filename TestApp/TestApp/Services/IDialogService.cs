@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace TestApp.Services
 {
+    internal enum FuncType
+    {
+        A,
+        B,
+        C
+    }
+
     internal interface IDialogService
     {
-        void ShowModelessDialog();
+        void ShowModelessDialog(FuncType funcType);
     }
 }

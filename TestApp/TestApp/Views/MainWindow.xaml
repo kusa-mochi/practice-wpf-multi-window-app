@@ -7,9 +7,6 @@
         xmlns:vm="clr-namespace:TestApp.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" SizeToContent="WidthAndHeight">
-    <Window.DataContext>
-        <vm:MainViewModel />
-    </Window.DataContext>
     <StackPanel Orientation="Vertical">
         <Button Command="{Binding OpenWindowACommand}">機能A</Button>
         <Button Command="{Binding OpenWindowBCommand}">機能B</Button>
